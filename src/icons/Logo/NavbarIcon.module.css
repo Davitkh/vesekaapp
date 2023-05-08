@@ -1,0 +1,44 @@
+.navbaricon:hover .navbaricon_left {
+  left: 50%;
+  transition: all ease 0.3s;
+}
+.navbaricon:hover .navbaricon_right {
+  left: 50%;
+  opacity: 0.5;
+  transition: all ease 0.3s;
+}
+.navbaricon:hover .navbaricon_middle {
+  border: 0;
+}
+.navbaricon {
+  cursor: pointer;
+}
+.navbaricon_left,
+.navbaricon_middle,
+.navbaricon_right {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  top: 50%;
+  transition: all ease 0.3s;
+}
+.navbaricon_left {
+  width: 32px;
+  height: 32px;
+  background: #0057b7;
+  border-radius: 50%;
+  left: 55%;
+}
+.navbaricon_middle {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  left: 50%;
+  border: 1px solid #fff;
+}
+.navbaricon_right {
+  width: 32px;
+  height: 32px;
+  background: #ffd700;
+  border-radius: 50%;
+  left: 45%;
+}

@@ -5,7 +5,9 @@
 }
 
 .navbar_logo {
-  margin-left: 32px;
+  position: relative;
+  height: 100%;
+  width: 264px;
 }
 .navbar_logo svg:hover {
   cursor: pointer;
@@ -15,14 +17,18 @@
   display: flex;
   align-items: center;
   margin-right: 32px;
+  height: 100%;
 }
 .navbar_links > li {
-  margin-left: 16px;
+  padding: 0 8px;
   cursor: pointer;
+  height: 100%;
 }
 .navbar_links > li > a {
+  display: block;
   color: var(--white);
+  line-height: 64px;
 }
 .navbar_links > li:hover {
-  color: var(--hoverwhite);
+  background: var(--hovernavbar);
 }

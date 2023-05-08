@@ -1,5 +1,13 @@
-import React from "react";
+import { useEffect } from 'react';
+import { AppTitles } from '../../enums/app_titles';
 
 export const Maps = () => {
-  return <div style={{ margin: "200px" }}>Maps</div>;
+  useEffect(() => {
+    document.title = AppTitles.Maps;
+  }, []);
+  return (
+    <div>
+      <h1>Карты</h1>
+    </div>
+  );
 };

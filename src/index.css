@@ -2,19 +2,19 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: "Roboto", sans-serif;
+  font-family: 'Roboto', sans-serif;
 }
 a {
   text-decoration: none;
 }
 .container {
   display: grid;
-  grid-template-rows: 48px auto;
+  grid-template-rows: 64px auto;
   grid-template-columns: 1fr;
   /*TODO: read css and css grids*/
   grid-template-areas:
-    "navbar_area"
-    "content_area";
+    'navbar_area'
+    'content_area';
   height: 100vh;
 }
 .navbar_area {
@@ -28,4 +28,5 @@ a {
   --primary: #d15df7;
   --white: #ffffff;
   --hoverwhite: #eaeaea;
+  --hovernavbar: #c525fb;
 }
