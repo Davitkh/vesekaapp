@@ -1,11 +1,11 @@
-import { NavbarIcon } from "../../icons/NavbarIcon";
-import styles from "./NavBar.module.css";
-import clx from "classnames";
-import { NavLink } from "react-router-dom";
+import { NavbarIcon } from '../../icons/Logo/NavbarIcon';
+import styles from './NavBar.module.css';
+import clx from 'classnames';
+import { NavLink } from 'react-router-dom';
 
 export function NavBar() {
   return (
-    <div className={clx(styles.navbar, "navbar_area")}>
+    <div className={clx(styles.navbar, 'navbar_area')}>
       {/*TODO: read css-flex csstrics*/}
       <div className={clx(styles.navbar_logo)}>
         <NavbarIcon />
@@ -20,16 +20,7 @@ export function NavBar() {
           <NavLink to="/maps">Карты</NavLink>
         </li>
         <li>
-          <NavLink to="/about">О нас</NavLink>
-        </li>
-        <li>
-          <NavLink to="/contacts">Контакты</NavLink>
-        </li>
-        <li>
-          <NavLink to="/signin">Войти</NavLink>
-        </li>
-        <li>
-          <NavLink to="/signup">Зарегистрироваться</NavLink>
+          <NavLink to="/auth">Войти</NavLink>
         </li>
       </ul>
     </div>
