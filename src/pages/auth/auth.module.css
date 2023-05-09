@@ -2,7 +2,7 @@
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: 1fr;
-  grid-template-areas: 'authform';
+  grid-template-areas: "authform";
   height: 100%;
 }
 .authform {
@@ -19,8 +19,8 @@
   color: var(--form_title);
 }
 
-input[type='text'],
-input[type='email'] {
+input[type="password"],
+input[type="email"] {
   display: block;
   width: 100%;
   outline: none;
@@ -29,8 +29,8 @@ input[type='email'] {
   border-radius: 4px;
 }
 
-input[type='text']::placeholder,
-input[type='email']::placeholder {
+input[type="text"]::placeholder,
+input[type="email"]::placeholder {
   color: var(--input_label);
 }
 .inputlabel {
@@ -39,8 +39,8 @@ input[type='email']::placeholder {
   color: var(--input_label);
 }
 
-button[type='submit'],
-button[type='button'] {
+button[type="submit"],
+button[type="button"] {
   display: block;
   width: 100%;
   padding: 8px;
@@ -52,10 +52,10 @@ button[type='button'] {
   font-weight: 600;
 }
 
-button[type='button'] {
+button[type="button"] {
   background: var(--default);
 }
-button[type='submit']:hover {
+button[type="submit"]:hover {
   opacity: 0.9;
 }
 
