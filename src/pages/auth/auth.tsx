@@ -1,62 +1,58 @@
-import { useEffect, useState } from "react";
-import { AppTitles } from "../../enums/app_titles";
-import styles from "./auth.module.css";
-import { LoginState } from "./authstate";
-import { ElementTypeTitles } from "../../enums/element_type_titles";
+import { useEffect, useState } from 'react';
+import { AuthStateKeys, handleAuthState } from './authstate';
+import { AppTitles } from '../../enums/app_titles';
+import styles from './auth.module.css';
+import { ElementTypeTitles } from '../../enums/element_type_titles';
 
 export const Auth = () => {
   useEffect(() => {
     document.title = AppTitles.Login;
   }, []);
-  const [authType, setAuthType] = useState("login");
+  const [authType, setAuthType] = useState<AuthStateKeys>(AuthStateKeys.Login);
+  const authState = handleAuthState(authType, setAuthType);
+  console.log(authState);
 
   switch (authType) {
-    case "login":
+    case AuthStateKeys.Login:
       return (
         <div className={styles.auth}>
           <form className={styles.authform}>
             <h1 className={styles.formtitle}>Войти</h1>
-            {LoginState(setAuthType).map((item) => {
+            {authState?.map((item) => {
               if (
-                item.login.type === ElementTypeTitles.Submit ||
-                item.login.type === ElementTypeTitles.Button
+                item.type === ElementTypeTitles.Submit ||
+                item.type === ElementTypeTitles.Button
               ) {
                 return (
                   <div
                     className={styles.buttonwrapper}
-                    key={JSON.stringify(item.login)}
+                    key={JSON.stringify(item)}
                   >
-                    <button type={item.login.type} onClick={item.login.onClick}>
-                      {item.login.label}
+                    <button type={item.type} onClick={item.onClick}>
+                      {item.label}
                     </button>
                   </div>
                 );
-              } else if (item.login.type === ElementTypeTitles.Span) {
+              } else if (item.type === ElementTypeTitles.Span) {
                 return (
                   <div
                     className={styles.forgotpassword}
-                    key={JSON.stringify(item.login)}
+                    key={JSON.stringify(item)}
                   >
-                    <span>{item.login.label}</span>
+                    <span>{item.label}</span>
                   </div>
                 );
               }
               return (
-                <div
-                  className={styles.inputwrapper}
-                  key={JSON.stringify(item.login)}
-                >
-                  <label
-                    htmlFor={item.login.name}
-                    className={styles.inputlabel}
-                  >
-                    {item.login.label}
+                <div className={styles.inputwrapper} key={JSON.stringify(item)}>
+                  <label htmlFor={item.name} className={styles.inputlabel}>
+                    {item.label}
                   </label>
                   <input
-                    type={item.login.type}
-                    name={item.login.name}
-                    placeholder={item.login.placeholder}
-                    autoComplete={"autoComplete"}
+                    type={item.type}
+                    name={item.name}
+                    placeholder={item.placeholder}
+                    autoComplete={'autoComplete'}
                   />
                 </div>
               );
@@ -64,52 +60,46 @@ export const Auth = () => {
           </form>
         </div>
       );
-    case "register":
+    case AuthStateKeys.Register:
       return (
         <div className={styles.auth}>
           <form className={styles.authform}>
-            <h1 className={styles.formtitle}>Зарегистрироваться</h1>
-            {LoginState(setAuthType).map((item) => {
+            <h1 className={styles.formtitle}>Зарегистроваться</h1>
+            {authState?.map((item) => {
               if (
-                item.login.type === ElementTypeTitles.Submit ||
-                item.login.type === ElementTypeTitles.Button
+                item.type === ElementTypeTitles.Submit ||
+                item.type === ElementTypeTitles.Button
               ) {
                 return (
                   <div
                     className={styles.buttonwrapper}
-                    key={JSON.stringify(item.login)}
+                    key={JSON.stringify(item)}
                   >
-                    <button type={item.login.type} onClick={item.login.onClick}>
-                      {item.login.label}
+                    <button type={item.type} onClick={() => {}}>
+                      {item.label}
                     </button>
                   </div>
                 );
-              } else if (item.login.type === ElementTypeTitles.Span) {
+              } else if (item.type === ElementTypeTitles.Span) {
                 return (
                   <div
                     className={styles.forgotpassword}
-                    key={JSON.stringify(item.login)}
+                    key={JSON.stringify(item)}
                   >
-                    <span>{item.login.label}</span>
+                    <span>{item.label}</span>
                   </div>
                 );
               }
               return (
-                <div
-                  className={styles.inputwrapper}
-                  key={JSON.stringify(item.login)}
-                >
-                  <label
-                    htmlFor={item.login.name}
-                    className={styles.inputlabel}
-                  >
-                    {item.login.label}
+                <div className={styles.inputwrapper} key={JSON.stringify(item)}>
+                  <label htmlFor={item.name} className={styles.inputlabel}>
+                    {item.label}
                   </label>
                   <input
-                    type={item.login.type}
-                    name={item.login.name}
-                    placeholder={item.login.placeholder}
-                    autoComplete={"autoComplete"}
+                    type={item.type}
+                    name={item.name}
+                    placeholder={item.placeholder}
+                    autoComplete={'autoComplete'}
                   />
                 </div>
               );
@@ -117,7 +107,9 @@ export const Auth = () => {
           </form>
         </div>
       );
+    case AuthStateKeys.Restore:
+      return <>Test 1</>;
     default:
-      return <></>;
+      return <>Restore</>;
   }
 };
