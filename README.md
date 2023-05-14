@@ -1,4 +1,5 @@
 ### 1. JavaScript -> https://learn.javascript.ru/ , playmarket||appstore-> sololearn
+        AJAX, COMET
 
 ### 2. html -> usage of tags, and atributes, learn block, inline, and inline-block elements https://webref.ru/course/html-tutorial
 
