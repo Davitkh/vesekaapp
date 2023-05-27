@@ -1,8 +1,8 @@
-import { useEffect, useState } from 'react';
-import { AuthStateKeys, handleAuthState } from './authstate';
-import { AppTitles } from '../../enums/app_titles';
-import styles from './auth.module.css';
-import { ElementTypeTitles } from '../../enums/element_type_titles';
+import { useEffect, useState } from "react";
+import { AuthStateKeys, handleAuthState } from "./authstate";
+import { AppTitles } from "../../enums/app_titles";
+import styles from "./auth.module.css";
+import { ElementTypeTitles } from "../../enums/element_type_titles";
 
 export const Auth = () => {
   useEffect(() => {
@@ -52,7 +52,7 @@ export const Auth = () => {
                     type={item.type}
                     name={item.name}
                     placeholder={item.placeholder}
-                    autoComplete={'autoComplete'}
+                    autoComplete={"autoComplete"}
                   />
                 </div>
               );
@@ -64,7 +64,7 @@ export const Auth = () => {
       return (
         <div className={styles.auth}>
           <form className={styles.authform}>
-            <h1 className={styles.formtitle}>Зарегистроваться</h1>
+            <h1 className={styles.formtitle}>Зарегистрироваться</h1>
             {authState?.map((item) => {
               if (
                 item.type === ElementTypeTitles.Submit ||
@@ -99,7 +99,7 @@ export const Auth = () => {
                     type={item.type}
                     name={item.name}
                     placeholder={item.placeholder}
-                    autoComplete={'autoComplete'}
+                    autoComplete={"autoComplete"}
                   />
                 </div>
               );
