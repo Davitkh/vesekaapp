@@ -20,6 +20,9 @@ export function NavBar() {
           <NavLink to="/maps">Карты</NavLink>
         </li>
         <li>
+          <NavLink to="/tasks">Задачи</NavLink>
+        </li>
+        <li>
           <NavLink to="/auth">Войти</NavLink>
         </li>
       </ul>
