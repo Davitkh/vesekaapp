@@ -1,5 +1,6 @@
 export enum AppTitles {
-  Main = 'Главная',
-  Maps = 'Карты',
-  Login = 'Логин',
+  Main = "Главная",
+  Maps = "Карты",
+  Login = "Логин",
+  Tasks = "Задачи",
 }

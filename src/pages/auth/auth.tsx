@@ -3,14 +3,25 @@ import { AuthStateKeys, handleAuthState } from "./authstate";
 import { AppTitles } from "../../enums/app_titles";
 import styles from "./auth.module.css";
 import { ElementTypeTitles } from "../../enums/element_type_titles";
+import { LoginFormState } from "../../types/loginformstate";
 
 export const Auth = () => {
   useEffect(() => {
     document.title = AppTitles.Login;
   }, []);
   const [authType, setAuthType] = useState<AuthStateKeys>(AuthStateKeys.Login);
-  const authState = handleAuthState(authType, setAuthType);
-  console.log(authState);
+  const [loginFormState, setLoginFormState] = useState<LoginFormState>({
+    email: "",
+    password: "",
+  });
+  console.log("loginFormState", loginFormState);
+
+  const authState = handleAuthState({
+    setAuthType,
+    authType,
+    setLoginFormState,
+    loginFormState,
+  });
 
   switch (authType) {
     case AuthStateKeys.Login:
@@ -49,10 +60,16 @@ export const Auth = () => {
                     {item.label}
                   </label>
                   <input
+                    value={
+                      item.name === "login"
+                        ? loginFormState.email
+                        : loginFormState.password
+                    }
                     type={item.type}
                     name={item.name}
                     placeholder={item.placeholder}
                     autoComplete={"autoComplete"}
+                    onChange={item.onChange}
                   />
                 </div>
               );
