@@ -1,123 +1,69 @@
-import { useEffect, useState } from "react";
-import { AppTitles } from "../../enums/app_titles";
-import styles from "./auth.module.css";
-import { LoginState } from "./authstate";
-import { ElementTypeTitles } from "../../enums/element_type_titles";
+import { useEffect } from 'react';
+import { AppTitles } from '../../enums/app_titles';
+import styles from './auth.module.css';
+// import { ElementTypeTitles } from '../../enums/element_type_titles';
+// import { LoginFormState, RegisterFormState } from '../../types/loginformstate';
+// import { gql, useMutation } from '@apollo/client';
+// import { AUTH_TOKEN } from '../../constants/constants';
+import { AuthStateKeys } from './authstate';
+import { TextInput } from '../../components/input/textinput/textinput';
+import { PrimaryButton } from '../../components/button/primary/primarybutton';
 
 export const Auth = () => {
   useEffect(() => {
     document.title = AppTitles.Login;
   }, []);
-  const [authType, setAuthType] = useState("login");
+  // const [authType, setAuthType] = useState<AuthStateKeys>();
 
-  switch (authType) {
-    case "login":
+  // const [loginFormState, setLoginFormState] = useState<LoginFormState>({
+  //   email: '',
+  //   password: '',
+  // });
+  // const [registerFormState, setRegisterFormState] = useState<RegisterFormState>(
+  //   {
+  //     name: '',
+  //     email: '',
+  //     password: '',
+  //   }
+  // );
+
+  // const [login] = useMutation(LOGIN_MUTATION, {
+  //   variables: {
+  //     email: loginFormState.email,
+  //     password: loginFormState.password,
+  //   },
+  //   onCompleted: ({ login }) => {
+  //     localStorage.setItem(AUTH_TOKEN, login.token);
+  //   },
+  // });
+
+  switch (AuthStateKeys.Login) {
+    case AuthStateKeys.Login:
       return (
         <div className={styles.auth}>
           <form className={styles.authform}>
             <h1 className={styles.formtitle}>Войти</h1>
-            {LoginState(setAuthType).map((item) => {
-              if (
-                item.login.type === ElementTypeTitles.Submit ||
-                item.login.type === ElementTypeTitles.Button
-              ) {
-                return (
-                  <div
-                    className={styles.buttonwrapper}
-                    key={JSON.stringify(item.login)}
-                  >
-                    <button type={item.login.type} onClick={item.login.onClick}>
-                      {item.login.label}
-                    </button>
-                  </div>
-                );
-              } else if (item.login.type === ElementTypeTitles.Span) {
-                return (
-                  <div
-                    className={styles.forgotpassword}
-                    key={JSON.stringify(item.login)}
-                  >
-                    <span>{item.login.label}</span>
-                  </div>
-                );
-              }
-              return (
-                <div
-                  className={styles.inputwrapper}
-                  key={JSON.stringify(item.login)}
-                >
-                  <label
-                    htmlFor={item.login.name}
-                    className={styles.inputlabel}
-                  >
-                    {item.login.label}
-                  </label>
-                  <input
-                    type={item.login.type}
-                    name={item.login.name}
-                    placeholder={item.login.placeholder}
-                    autoComplete={"autoComplete"}
-                  />
-                </div>
-              );
-            })}
+            <TextInput placeholder="Логин" customClass="auth_inp_mb_24" />
+            <TextInput placeholder="Логин" />
+            <PrimaryButton title="Войти" customClass="auth_inp_mt_24" />
+            <PrimaryButton
+              title="Зарегистрироваться"
+              customClass={['auth_inp_mt_24', 'accept']}
+            />
           </form>
         </div>
       );
-    case "register":
-      return (
-        <div className={styles.auth}>
-          <form className={styles.authform}>
-            <h1 className={styles.formtitle}>Зарегистрироваться</h1>
-            {LoginState(setAuthType).map((item) => {
-              if (
-                item.login.type === ElementTypeTitles.Submit ||
-                item.login.type === ElementTypeTitles.Button
-              ) {
-                return (
-                  <div
-                    className={styles.buttonwrapper}
-                    key={JSON.stringify(item.login)}
-                  >
-                    <button type={item.login.type} onClick={item.login.onClick}>
-                      {item.login.label}
-                    </button>
-                  </div>
-                );
-              } else if (item.login.type === ElementTypeTitles.Span) {
-                return (
-                  <div
-                    className={styles.forgotpassword}
-                    key={JSON.stringify(item.login)}
-                  >
-                    <span>{item.login.label}</span>
-                  </div>
-                );
-              }
-              return (
-                <div
-                  className={styles.inputwrapper}
-                  key={JSON.stringify(item.login)}
-                >
-                  <label
-                    htmlFor={item.login.name}
-                    className={styles.inputlabel}
-                  >
-                    {item.login.label}
-                  </label>
-                  <input
-                    type={item.login.type}
-                    name={item.login.name}
-                    placeholder={item.login.placeholder}
-                    autoComplete={"autoComplete"}
-                  />
-                </div>
-              );
-            })}
-          </form>
-        </div>
-      );
+    // case AuthStateKeys.Register:
+    //   return (
+    //     <div className={styles.auth}>
+    //       <form className={styles.authform}>
+    //         <h1 className={styles.formtitle}>Зарегистрироваться</h1>
+    //       </form>
+    //     </div>
+    //   );
+    // case AuthStateKeys.Restore:
+    //   return <>Test 1</>;
     default:
-      return <></>;
+      return <>Restore</>;
   }
 };

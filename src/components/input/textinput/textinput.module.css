@@ -1,0 +1,13 @@
+.textinput,
+.textinput input {
+  width: 100%;
+}
+.textinput input {
+  border: 1px solid var(--input_border);
+  padding: 8px;
+  border-radius: 4px;
+  outline: none;
+}
+.auth_inp_mb_24 {
+  margin-bottom: 24px;
+}
