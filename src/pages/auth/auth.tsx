@@ -65,5 +65,6 @@ export const Auth = () => {
     //   return <>Test 1</>;
     default:
       return <>Restore</>;
+      return <>Restore</>;
   }
 };
