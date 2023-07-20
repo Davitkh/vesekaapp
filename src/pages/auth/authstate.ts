@@ -1,14 +1,12 @@
-import { FormEvent, SyntheticEvent } from "react";
+import { SyntheticEvent } from "react";
 import { ElementTypeTitles } from "../../enums/element_type_titles";
-import { LoginFormState } from "../../types/loginformstate";
 
-interface AuthItemTypes {
+interface LoginTypes {
   label: string;
   type: ElementTypeTitles;
   name: string;
   placeholder: string;
-  onClick?: (e?: SyntheticEvent) => void;
-  onChange?: (e?: FormEvent<HTMLInputElement>) => void;
+  onClick?: (e: SyntheticEvent) => void;
 }
 
 export enum AuthStateKeys {
@@ -20,14 +18,8 @@ export enum AuthStateKeys {
 type AuthStateTypes = {
   [key in AuthStateKeys]?: AuthItemTypes[];
 };
-interface AuthStateProps {
-  authType: AuthStateKeys;
-  setAuthType: Function;
-  setLoginFormState: Function;
-  loginFormState: LoginFormState;
-}
-export const handleAuthState = (props: AuthStateProps) => {
-  const { setAuthType, authType, loginFormState, setLoginFormState } = props;
+
+export const handleAuthState = (authtype: AuthStateKeys, setter: Function) => {
   const AuthState: AuthStateTypes[] = [
     {
       login: [
@@ -36,24 +28,12 @@ export const handleAuthState = (props: AuthStateProps) => {
           type: ElementTypeTitles.Email,
           name: "login",
           placeholder: "телефон или почту",
-          onChange: (e) =>
-            setLoginFormState &&
-            setLoginFormState({
-              ...loginFormState,
-              email: e?.currentTarget.value,
-            }),
         },
         {
           label: "Пароль",
           type: ElementTypeTitles.Password,
-          name: "password",
+          name: "login",
           placeholder: "пароль",
-          onChange: (e) =>
-            setLoginFormState &&
-            setLoginFormState({
-              ...loginFormState,
-              password: e?.currentTarget.value,
-            }),
         },
         {
           label: "Забыли пароль ?",
@@ -74,7 +54,7 @@ export const handleAuthState = (props: AuthStateProps) => {
           placeholder: "",
           onClick: (e) => {
             e && e.preventDefault();
-            setAuthType && setAuthType("register");
+            setter && setter("register");
           },
         },
       ],
@@ -152,8 +132,8 @@ export const handleAuthState = (props: AuthStateProps) => {
       ],
     },
   ];
-  const needData = AuthState.find((data) => data[authType]);
+  const needData = AuthState.find((data) => data[authtype]);
   if (needData) {
-    return needData[authType];
+    return needData[authtype];
   }
 };

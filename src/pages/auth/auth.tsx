@@ -1,29 +1,43 @@
-import { useEffect, useState } from "react";
-import { AuthStateKeys, handleAuthState } from "./authstate";
+import { useEffect } from "react";
 import { AppTitles } from "../../enums/app_titles";
 import styles from "./auth.module.css";
-import { ElementTypeTitles } from "../../enums/element_type_titles";
-import { LoginFormState } from "../../types/loginformstate";
+// import { ElementTypeTitles } from '../../enums/element_type_titles';
+// import { LoginFormState, RegisterFormState } from '../../types/loginformstate';
+// import { gql, useMutation } from '@apollo/client';
+// import { AUTH_TOKEN } from '../../constants/constants';
+import { AuthStateKeys } from "./authstate";
+import { TextInput } from "../../components/input/textinput/textinput";
+import { PrimaryButton } from "../../components/button/primary/primarybutton";
 
 export const Auth = () => {
   useEffect(() => {
     document.title = AppTitles.Login;
   }, []);
-  const [authType, setAuthType] = useState<AuthStateKeys>(AuthStateKeys.Login);
-  const [loginFormState, setLoginFormState] = useState<LoginFormState>({
-    email: "",
-    password: "",
-  });
-  console.log("loginFormState", loginFormState);
+  // const [authType, setAuthType] = useState<AuthStateKeys>();
 
-  const authState = handleAuthState({
-    setAuthType,
-    authType,
-    setLoginFormState,
-    loginFormState,
-  });
+  // const [loginFormState, setLoginFormState] = useState<LoginFormState>({
+  //   email: '',
+  //   password: '',
+  // });
+  // const [registerFormState, setRegisterFormState] = useState<RegisterFormState>(
+  //   {
+  //     name: '',
+  //     email: '',
+  //     password: '',
+  //   }
+  // );
 
-  switch (authType) {
+  // const [login] = useMutation(LOGIN_MUTATION, {
+  //   variables: {
+  //     email: loginFormState.email,
+  //     password: loginFormState.password,
+  //   },
+  //   onCompleted: ({ login }) => {
+  //     localStorage.setItem(AUTH_TOKEN, login.token);
+  //   },
+  // });
+
+  switch (AuthStateKeys.Login) {
     case AuthStateKeys.Login:
       return (
         <div className={styles.auth}>
@@ -60,16 +74,10 @@ export const Auth = () => {
                     {item.label}
                   </label>
                   <input
-                    value={
-                      item.name === "login"
-                        ? loginFormState.email
-                        : loginFormState.password
-                    }
                     type={item.type}
                     name={item.name}
                     placeholder={item.placeholder}
                     autoComplete={"autoComplete"}
-                    onChange={item.onChange}
                   />
                 </div>
               );
@@ -81,7 +89,7 @@ export const Auth = () => {
       return (
         <div className={styles.auth}>
           <form className={styles.authform}>
-            <h1 className={styles.formtitle}>Зарегистрироваться</h1>
+            <h1 className={styles.formtitle}>Зарегистроваться</h1>
             {authState?.map((item) => {
               if (
                 item.type === ElementTypeTitles.Submit ||
@@ -127,6 +135,7 @@ export const Auth = () => {
     case AuthStateKeys.Restore:
       return <>Test 1</>;
     default:
+      return <>Restore</>;
       return <>Restore</>;
   }
 };
