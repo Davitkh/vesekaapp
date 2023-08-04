@@ -1,38 +1,13 @@
 * {
-  margin: 0;
   padding: 0;
+  margin: 0;
   box-sizing: border-box;
-  font-family: 'Roboto', sans-serif;
 }
-a {
-  text-decoration: none;
-}
-.container {
+.wrapper {
   display: grid;
-  grid-template-rows: 64px auto;
+  grid-template-rows: auto 1fr;
   grid-template-columns: 1fr;
-  /*TODO: read css and css grids*/
   grid-template-areas:
-    'navbar_area'
-    'content_area';
-  height: 100vh;
-  background: var(--fond);
-}
-.navbar_area {
-  grid-area: navbar_area;
-  background: var(--primary);
-}
-.content_area {
-  grid-area: content_area;
-}
-:root {
-  --primary: #d15df7;
-  --white: #ffffff;
-  --hovernavbar: #c525fb;
-  --fond: #e0e0e0;
-  --input_border: #dedede;
-  --input_label: #858585;
-  --form_title: #474747;
-  --submit: #40e00b;
-  --default: #0014c8;
+    "navbar_"
+    "content_";
 }

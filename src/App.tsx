@@ -1,13 +1,13 @@
-import { NavBar } from './view/NavBar/NavBar';
-import { Content } from './view/Content/Content';
+import { Content } from "./components/partials/content/content";
+import { Navbar } from "./components/partials/navbar/navbar";
 
-function App() {
+const App = () => {
   return (
-    <div className="container">
-      <NavBar />
+    <div className="wrapper">
+      <Navbar />
       <Content />
     </div>
   );
-}
+};
 
 export default App;
