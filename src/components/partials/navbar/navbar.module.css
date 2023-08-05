@@ -11,11 +11,14 @@
   color: #ffffff;
   text-decoration: none;
   margin-left: 16px;
+  opacity: 0.8;
 }
 .navbar_items a:hover {
-  opacity: 0.8;
   cursor: pointer;
+  opacity: 1;
+  transition: 0.2s;
 }
+
 .navbar_logo {
   font-size: 18pt;
   color: #ffffff;

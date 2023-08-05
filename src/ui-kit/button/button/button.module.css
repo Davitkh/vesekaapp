@@ -1,0 +1,21 @@
+.button_ {
+  width: 100%;
+  outline: none;
+  border: none;
+  border-radius: 4px;
+}
+.button_ button {
+  width: 100%;
+  outline: none;
+  border: none;
+  border-radius: 4px;
+  padding: 4px 8px;
+  margin: 16px 0;
+  opacity: 0.8;
+  background: #5eba7d;
+  color: #ffffff;
+}
+.button_ button:hover {
+  opacity: 1;
+  cursor: pointer;
+}
