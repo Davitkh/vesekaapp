@@ -1,0 +1,27 @@
+import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
+import { Users } from "./fakeapitypes";
+
+export const jphapi = createApi({
+  reducerPath: "jsonplaceholder",
+  baseQuery: fetchBaseQuery({
+    baseUrl: "https://jsonplaceholder.typicode.com/",
+  }),
+  endpoints: (build) => ({
+    search: build.query<Users, string>({
+      query: (searchParam) => ({
+        url: "/users",
+        params: searchParam
+          ? {
+              //   _start: 0,
+              //   _limit: 3,
+              name: searchParam,
+            }
+          : {},
+      }),
+      //   transformResponse: (response: Users) =>
+      //     response.map((items) => items.name),
+    }),
+  }),
+});
+
+export const { useSearchQuery } = jphapi;
