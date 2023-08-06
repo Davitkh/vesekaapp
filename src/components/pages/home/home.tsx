@@ -4,5 +4,10 @@ export const Home = () => {
   useEffect(() => {
     document.title = "Home";
   });
-  return <div>Home</div>;
+
+  return (
+    <div>
+      <div>Home</div>
+    </div>
+  );
 };

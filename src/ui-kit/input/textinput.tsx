@@ -3,7 +3,7 @@ import styles from "./textinput.module.css";
 import cls from "classnames";
 
 interface TextinputProps {
-  onChange: () => void;
+  onChange: (e: React.FormEvent<HTMLInputElement>) => void;
   id?: string;
   labaltitle?: string;
   placeholder?: string;
@@ -16,7 +16,7 @@ export const Textinput: FC<TextinputProps> = (props) => {
   const { onChange, id, labaltitle, placeholder, value, className, type } =
     props;
   return (
-    <div className={cls(styles.textinput, className)}>
+    <div className={cls(styles.textinput, styles[className || ""])}>
       <label htmlFor={id}>{labaltitle || ""}</label>
       <input
         value={value}
