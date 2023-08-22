@@ -5,6 +5,7 @@ import { Home } from "../../pages/home/home";
 import { Maps } from "../../pages/maps/maps";
 import { Auth } from "../../pages/auth/auth";
 import { Users } from "../../pages/users/users";
+import { Details } from "../../pages/details/details";
 
 export const Content = () => {
   return (
@@ -12,6 +13,7 @@ export const Content = () => {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/users" element={<Users />} />
+        <Route path="/users/details" element={<Details />} />
         <Route path="/maps" element={<Maps />} />
         <Route path="/auth" element={<Auth />} />
       </Routes>
