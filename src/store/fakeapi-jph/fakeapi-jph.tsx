@@ -1,15 +1,15 @@
-import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
-import { Users } from "./fakeapitypes";
+import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
+import { Users } from './fakeapitypes';
 
 export const jphapi = createApi({
-  reducerPath: "jsonplaceholder",
+  reducerPath: 'jsonplaceholder',
   baseQuery: fetchBaseQuery({
-    baseUrl: "https://jsonplaceholder.typicode.com/",
+    baseUrl: 'https://jsonplaceholder.typicode.com/',
   }),
   endpoints: (build) => ({
-    search: build.query<Users, string>({
+    search: build.query<Users, string | null>({
       query: (searchParam) => ({
-        url: "/users",
+        url: '/users',
         params: searchParam
           ? {
               //   _start: 0,
