@@ -3,14 +3,15 @@
   grid-template-rows: 0.5 auto 1fr;
   grid-template-columns: auto auto auto;
   grid-template-areas:
-    " . . . "
-    " . authform . "
-    " . . . ";
+    ' . . . '
+    ' . authform . '
+    ' . . . ';
   height: 100%;
 }
 
 .authform {
   grid-area: authform;
+  width: 50%;
   background-color: #ffffff;
   padding: 24px;
   border-radius: 6px;
@@ -23,4 +24,18 @@
 }
 .authform_title {
   color: #7d7d7d;
+}
+.authform_actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.authform_actions span {
+  font-size: 12px;
+  color: #0a95ff;
+  cursor: pointer;
+  user-select: none;
+}
+.authform_actions span:hover {
+  opacity: 0.8;
 }
