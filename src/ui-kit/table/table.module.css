@@ -1,0 +1,7 @@
+.table_ {
+  width: 100%;
+}
+.table_ th,
+.table_ td {
+  text-align: start;
+}

@@ -1,21 +1,16 @@
 .users_ {
+  height: 100%;
   display: grid;
-  grid-template-rows: auto 1fr;
+  grid-template-rows: 1fr;
   grid-template-columns: 1fr;
-  grid-template-areas:
-    "users_header"
-    "users_body";
-  padding: 32px;
+  grid-template-areas: 'body';
 }
-.users_header {
-  grid-area: users_header;
-  color: #7d7d7d;
-  padding: 0 0 32px 0;
-}
+
 .users_body {
-  grid-area: users_body;
+  grid-area: body;
+  padding: 64px 48px;
 }
-.user_items {
+/* .user_items {
   margin: 8px 0;
   padding: 8px;
   background: #ffffff;
@@ -29,4 +24,4 @@
   cursor: pointer;
   transition: all ease 0.2s;
   color: #ffffff;
-}
+} */

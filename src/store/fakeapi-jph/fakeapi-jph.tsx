@@ -1,5 +1,5 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
-import { Users } from './fakeapitypes';
+import { Users } from '../../types/fakeapi.td';
 
 export const jphapi = createApi({
   reducerPath: 'jsonplaceholder',
