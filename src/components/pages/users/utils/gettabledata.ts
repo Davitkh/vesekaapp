@@ -6,12 +6,28 @@ export const gettabledata = (data: any): ITable[] => {
     return [];
   }
   const userDataHeader = {
-    row: [{ title: 'Name' }],
-    rowType: 'header',
+    row: [
+      {
+        name: 'Name',
+        email: 'Email',
+        address: 'Address',
+        phone: 'Phone',
+        website: 'Website',
+        company: 'Company',
+      },
+    ],
   };
   const userData = data.map((item: User) => ({
-    row: [{ title: item.username }],
-    rowType: 'body',
+    row: [
+      {
+        name: item.name,
+        email: item.email,
+        address: `${item.address.city} ${item.address.street}`,
+        phone: item.phone,
+        website: item.website,
+        company: item.company.name,
+      },
+    ],
   }));
   userData.unshift(userDataHeader);
   return userData;

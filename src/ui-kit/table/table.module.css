@@ -1,7 +1,23 @@
+.table_wrapper {
+  max-height: 760px;
+  overflow-y: auto;
+}
 .table_ {
   width: 100%;
+  border-collapse: collapse;
 }
+.thead_ {
+  position: sticky;
+  top: 0;
+  background: #fffefe;
+  z-index: -1;
+}
+
 .table_ th,
 .table_ td {
   text-align: start;
+  padding: 8px;
+}
+.tbody_ tr:nth-child(odd) {
+  background-color: #dddddd;
 }

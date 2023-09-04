@@ -9,41 +9,38 @@ interface ITableProps {
 }
 export const Table: FC<ITableProps> = (props) => {
   const { data } = props;
+  console.log('data', data);
   return (
-    <div>
+    <div className={cls(styles.table_wrapper)}>
       <table className={cls(styles.table_)}>
-        {data.map((item) => {
-          if (item.rowType === 'header') {
+        <thead key={uuidv4()} className={cls(styles.thead_)}>
+          <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Address</th>
+            <th>Phone</th>
+            <th>Company</th>
+            <th>Website</th>
+          </tr>
+        </thead>
+        <tbody className={cls(styles.tbody_)}>
+          {data.map((item) => {
             return (
-              <thead key={uuidv4()}>
-                <tr>
-                  {item.row.map((thead) => (
-                    <Fragment key={uuidv4()}>
-                      <th>{thead.title}</th>
-                      <th>{thead.title}</th>
-                      <th>{thead.title}</th>
-                      <th>{thead.title}</th>
-                    </Fragment>
-                  ))}
-                </tr>
-              </thead>
-            );
-          }
-          return (
-            <tbody key={uuidv4()}>
-              <tr>
+              <tr key={uuidv4()}>
                 {item.row.map((tbody) => (
                   <Fragment key={uuidv4()}>
-                    <td>{tbody.title}</td>
-                    <td>{tbody.title}</td>
-                    <td>{tbody.title}</td>
-                    <td>{tbody.title}</td>
+                    <td>{tbody.name}</td>
+                    <td>{tbody.email}</td>
+                    <td>{tbody.address}</td>
+                    <td>{tbody.phone}</td>
+                    <td>{tbody.company}</td>
+                    <td>{tbody.website}</td>
                   </Fragment>
                 ))}
               </tr>
-            </tbody>
-          );
-        })}
+            );
+          })}
+        </tbody>
       </table>
     </div>
   );

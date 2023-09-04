@@ -1,9 +1,13 @@
 export interface ITable {
   row: Row[];
-  rowType?: string;
   colSpan?: number;
   rowSpan?: number;
 }
 export interface Row {
-  title: string;
+  name: string;
+  email: string;
+  address: string;
+  phone: string;
+  website: string;
+  company: string;
 }
