@@ -9,13 +9,14 @@ import { gettabledata } from './utils/gettabledata';
 export const Users = () => {
   const { isLoading, data } = useSearchQuery('');
   // const navigate = useNavigate();
+  const tdata = gettabledata(data);
   if (isLoading) return <Loader />;
 
   return (
     <div className={cls(styles.users_)}>
       <div className={cls(styles.users_body)}>
         <h3 className={cls(styles.users_header)}>All users</h3>
-        {<Table data={gettabledata(data)} />}
+        {<Table data={tdata} />}
       </div>
     </div>
   );
