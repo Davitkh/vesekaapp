@@ -12,3 +12,6 @@
 .p-0 input {
   margin: 0 !important;
 }
+.w-auto {
+  width: auto;
+}

@@ -1,6 +1,7 @@
-import { FC } from "react";
-import styles from "./textinput.module.css";
-import cls from "classnames";
+import { FC } from 'react';
+import styles from './textinput.module.css';
+import cls from 'classnames';
+import { getclasses } from './utils/getclasses';
 
 interface TextinputProps {
   onChange: (e: React.FormEvent<HTMLInputElement>) => void;
@@ -8,22 +9,24 @@ interface TextinputProps {
   labaltitle?: string;
   placeholder?: string;
   value?: string;
-  className?: string;
+  classNames?: string | string[];
   type?: string;
 }
 
 export const Textinput: FC<TextinputProps> = (props) => {
-  const { onChange, id, labaltitle, placeholder, value, className, type } =
+  const { onChange, id, labaltitle, placeholder, value, classNames, type } =
     props;
+  const classes = getclasses(styles, classNames);
+  console.log('clasess', classes);
   return (
-    <div className={cls(styles.textinput, styles[className || ""])}>
-      <label htmlFor={id}>{labaltitle || ""}</label>
+    <div className={cls(styles.textinput, classes)}>
+      <label htmlFor={id}>{labaltitle || ''}</label>
       <input
         value={value}
         id={id}
-        type={type || "text"}
+        type={type || 'text'}
         onChange={onChange}
-        placeholder={placeholder || ""}
+        placeholder={placeholder || ''}
       />
     </div>
   );
