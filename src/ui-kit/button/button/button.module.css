@@ -19,3 +19,6 @@
   opacity: 0.9;
   cursor: pointer;
 }
+.button_disabled button {
+  background: #a0a0a0;
+}
