@@ -1,12 +1,12 @@
 import { Content } from './components/partials/content/content';
 import { Navbar } from './components/partials/navbar/navbar';
 // import { useActions } from './hooks/actions';
-import { useAppSelector } from './hooks/redux';
+// import { useAppSelector } from './hooks/redux';
 
 const App = () => {
   // const { toggleAuthForm } = useActions();
-  const { isLogin } = useAppSelector((state) => state.toggler);
-  console.log(isLogin);
+  // const { isLogin } = useAppSelector((state) => state.toggler);
+  // console.log(isLogin);
   // const testFoonction = (event: React.MouseEvent) => {
   //   event.preventDefault();
   //   toggleAuthForm(isLogin ? false : true);
