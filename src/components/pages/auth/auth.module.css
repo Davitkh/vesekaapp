@@ -1,6 +1,6 @@
 .auth_ {
   display: grid;
-  grid-template-rows: 0.5 auto 1fr;
+  grid-template-rows: 0.5fr auto 1fr;
   grid-template-columns: auto auto auto;
   grid-template-areas:
     ' . . . '

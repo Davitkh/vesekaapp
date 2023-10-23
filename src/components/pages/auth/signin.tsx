@@ -1,8 +1,9 @@
-import { FormEvent, useEffect, useState } from "react";
-import cls from "classnames";
-import styles from "./auth.module.css";
-import { Textinput } from "../../../ui-kit/input/textinput";
-import { Button } from "../../../ui-kit/button/button/button";
+import { FormEvent, useEffect, useState } from 'react';
+import cls from 'classnames';
+import styles from './auth.module.css';
+import { Textinput } from '../../../ui-kit/input/textinput';
+import { Button } from '../../../ui-kit/button/button/button';
+import { useSignInMutation } from '../../../store/api/auth_api';
 
 interface ILoginData {
   email: string;
@@ -11,12 +12,12 @@ interface ILoginData {
 
 export const SignIn = () => {
   useEffect(() => {
-    document.title = "Auth";
+    document.title = 'Auth';
   });
 
   const [loginData, setLoginData] = useState<ILoginData>({
-    email: "",
-    password: "",
+    email: '',
+    password: '',
   });
 
   const pickLoginData = (event: FormEvent<HTMLInputElement>) => {
@@ -25,41 +26,28 @@ export const SignIn = () => {
       [event.currentTarget.name]: event.currentTarget.value,
     });
   };
-  console.log(loginData);
-  const handleSignIn = (event: FormEvent<HTMLFormElement>) => {
+
+  const [signIn, { isLoading, data }] = useSignInMutation();
+  const handleSignIn = (event: React.FormEvent<HTMLElement>) => {
     event.preventDefault();
-    fetch("http://localhost:4000/auth/signin", {
-      method: "POST",
-      mode: "no-cors",
-      body: JSON.stringify(loginData),
-      headers: {
-        "Content-Type": "application/json",
-        // 'Content-Type': 'application/x-www-form-urlencoded',
-      },
-    });
-    // .then((response) => {
-    //   return response.json();
-    // })
-    // .then((data) => {
-    //   console.log(data);
-    // });
+    signIn(loginData).then((res) => console.log('res', res));
   };
 
   return (
     <div className={cls(styles.auth_)}>
       <div className={cls(styles.authform)}>
-        <form className={cls()} onSubmit={handleSignIn}>
+        <form className={cls()} onSubmit={(event) => handleSignIn(event)}>
           <h2 className={cls(styles.authform_title)}>Sign in</h2>
           <Textinput
-            name={"email"}
+            name={'email'}
             onChange={(event) => pickLoginData(event)}
-            placeholder={"email"}
+            placeholder={'email'}
             value={loginData.email}
           />
           <Textinput
-            name={"password"}
+            name={'password'}
             onChange={(event) => pickLoginData(event)}
-            placeholder={"password"}
+            placeholder={'password'}
             value={loginData.password}
           />
           <Button
