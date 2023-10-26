@@ -3,8 +3,6 @@ import { Loader } from '../../../ui-kit/loader/loader';
 import cls from 'classnames';
 import styles from './users.module.css';
 // import { useNavigate } from 'react-router-dom';
-import { Table } from '../../../ui-kit/table/table';
-import { gettabledata } from './utils/gettabledata';
 
 export const Users = () => {
   // const { isLoading, data } = useSearchQuery('');

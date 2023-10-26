@@ -1,9 +1,9 @@
 import { bindActionCreators } from '@reduxjs/toolkit';
 import { useDispatch } from 'react-redux';
-import { togglerActions } from '../store/toggler.slice';
+import { signInActions } from '../store/detectors.slice';
 import { AppDispatch } from '../store/store';
 
-const actions = { ...togglerActions };
+const actions = { ...signInActions };
 
 export const useActions = () => {
   const useAppDispatch: () => AppDispatch = useDispatch;
