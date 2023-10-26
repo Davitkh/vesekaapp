@@ -1,13 +1,11 @@
 import { configureStore } from '@reduxjs/toolkit';
-// import { jphapi } from './fakeapi-jph/fakeapi-jph';
-import { togglerReducers } from './toggler.slice';
+import { signInReducers } from './detectors.slice';
 import { AuthApi } from './api/auth_api';
 
 export const store = configureStore({
   reducer: {
     [AuthApi.reducerPath]: AuthApi.reducer,
-    // [jphapi.reducerPath]: jphapi.reducer,
-    toggler: togglerReducers,
+    signIn: signInReducers,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware().concat(AuthApi.middleware),

@@ -1,9 +1,12 @@
 import { FormEvent, useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import cls from 'classnames';
 import styles from './auth.module.css';
 import { Textinput } from '../../../ui-kit/input/textinput';
 import { Button } from '../../../ui-kit/button/button/button';
 import { useSignInMutation } from '../../../store/api/auth_api';
+import { useActions } from '../../../hooks/actions';
+import { IError } from '../../../types/error';
 
 interface ILoginData {
   email: string;
@@ -20,6 +23,8 @@ export const SignIn = () => {
     password: '',
   });
 
+  const navigate = useNavigate();
+
   const pickLoginData = (event: FormEvent<HTMLInputElement>) => {
     setLoginData({
       ...loginData,
@@ -27,16 +32,28 @@ export const SignIn = () => {
     });
   };
 
-  const [signIn, { isLoading, data }] = useSignInMutation();
-  const handleSignIn = (event: React.FormEvent<HTMLElement>) => {
+  const [signIn] = useSignInMutation();
+  const { handleSignIn } = useActions();
+
+  const SignIn = async (event: React.FormEvent<HTMLElement>) => {
     event.preventDefault();
-    signIn(loginData).then((res) => console.log('res', res));
+    try {
+      await signIn(loginData)
+        .unwrap()
+        .then((payload) => handleSignIn(payload))
+        .then(() => navigate('/'));
+    } catch (err) {
+      const {
+        data: { error },
+      } = err as IError;
+      console.log('error', error);
+    }
   };
 
   return (
     <div className={cls(styles.auth_)}>
       <div className={cls(styles.authform)}>
-        <form className={cls()} onSubmit={(event) => handleSignIn(event)}>
+        <form className={cls()} onSubmit={(event) => SignIn(event)}>
           <h2 className={cls(styles.authform_title)}>Sign in</h2>
           <Textinput
             name={'email'}
