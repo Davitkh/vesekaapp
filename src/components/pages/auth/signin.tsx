@@ -25,20 +25,20 @@ export const SignIn = () => {
 
   const navigate = useNavigate();
 
-  const pickLoginData = (event: FormEvent<HTMLInputElement>) => {
+  const pickLoginData = (e: FormEvent<HTMLInputElement>) => {
     setLoginData({
       ...loginData,
-      [event.currentTarget.name]: event.currentTarget.value,
+      [e.currentTarget.name]: e.currentTarget.value,
     });
   };
 
   const [signIn] = useSignInMutation();
   const { handleSignIn } = useActions();
 
-  const SignIn = async (event: React.FormEvent<HTMLElement>) => {
-    event.preventDefault();
+  const SignIn = (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
     try {
-      await signIn(loginData)
+      signIn(loginData)
         .unwrap()
         .then((payload) => handleSignIn(payload))
         .then(() => navigate('/'));
@@ -53,17 +53,17 @@ export const SignIn = () => {
   return (
     <div className={cls(styles.auth_)}>
       <div className={cls(styles.authform)}>
-        <form className={cls()} onSubmit={(event) => SignIn(event)}>
+        <form className={cls()} onSubmit={(e) => SignIn(e)}>
           <h2 className={cls(styles.authform_title)}>Sign in</h2>
           <Textinput
             name={'email'}
-            onChange={(event) => pickLoginData(event)}
+            onChange={(e) => pickLoginData(e)}
             placeholder={'email'}
             value={loginData.email}
           />
           <Textinput
             name={'password'}
-            onChange={(event) => pickLoginData(event)}
+            onChange={(e) => pickLoginData(e)}
             placeholder={'password'}
             value={loginData.password}
           />

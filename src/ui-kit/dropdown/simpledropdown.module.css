@@ -1,0 +1,18 @@
+.simpledropdown {
+  color: #006abb;
+  background: #f1f1f1;
+  list-style: none;
+  padding: 6px;
+  border-radius: 6px;
+  text-align: center;
+  user-select: none;
+}
+.simpledropdown > li {
+  cursor: pointer;
+  padding: 4px;
+}
+.simpledropdown > li:hover {
+  cursor: pointer;
+  background: #006abb;
+  color: #f1f1f1;
+}
