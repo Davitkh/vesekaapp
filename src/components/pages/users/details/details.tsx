@@ -2,7 +2,6 @@ import { useSearchParams } from 'react-router-dom';
 // import { useSearchQuery } from '../../../../store/fakeapi-jph/fakeapi-jph';
 import { Loader } from '../../../../ui-kit/loader/loader';
 import styles from './details.module.css';
-import { UserIcon } from '../../../../ui-kit/icons/UserIcon';
 
 export const Details = () => {
   const [searchParams] = useSearchParams();

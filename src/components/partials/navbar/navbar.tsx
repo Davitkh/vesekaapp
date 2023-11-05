@@ -2,18 +2,18 @@ import cls from 'classnames';
 import styles from './navbar.module.css';
 import './navbar.module.css';
 import { NavLink } from 'react-router-dom';
-import { Textinput } from '../../../ui-kit/input/textinput';
-import { useLocation } from 'react-router-dom';
+// import { useLocation } from 'react-router-dom';
 import { useAppSelector } from '../../../hooks/redux';
+import { Icon } from '../../../ui-kit/icons/icon';
+import { useActions } from '../../../hooks/actions';
+import { SimpleDropDown } from '../../../ui-kit/dropdown/simpledropdown';
 
 export const Navbar = () => {
-  const location = useLocation();
-  const isNeedToSearch = location.pathname === '/users';
-  const searchHandler = (e: React.FormEvent<HTMLInputElement>) => {
-    // setValue(e.currentTarget.value);
-  };
+  const { openLogOutWindow, handleLogOut } = useActions();
+
   const { user } = useAppSelector((state) => state.signIn);
-  const isUserSignIn = user.email && user.firstName && user.lastName;
+  const { isLogOutWindowOpen } = useAppSelector((state) => state.toggle);
+
   return (
     <nav className={cls(styles.navbar_)}>
       <div className={cls(styles.navbar_logo)}>
@@ -21,25 +21,35 @@ export const Navbar = () => {
       </div>
 
       <div className={cls(styles.navbar_items, 'top_navbar_items')}>
-        {isNeedToSearch && (
-          <Textinput
-            onChange={searchHandler}
-            placeholder="search"
-            classNames={['p-0', 'w-auto']}
-          />
-        )}
-        {isUserSignIn ? (
+        {user ? (
           <>
             <NavLink to="/">Home</NavLink>
             <NavLink to="/users">Users</NavLink>
             <NavLink to="/maps">Maps</NavLink>
-            <NavLink to="/signout">Sign out</NavLink>
+
+            <Icon
+              className={cls(styles.navbar_items_usericon)}
+              icon="fa-solid fa-user"
+              onClick={() =>
+                openLogOutWindow(isLogOutWindowOpen ? false : true)
+              }
+            />
           </>
         ) : (
           <>
             <NavLink to="auth/signin">Sign In</NavLink>
             <NavLink to="auth/signup">Sign Up</NavLink>
           </>
+        )}
+        {isLogOutWindowOpen && (
+          <SimpleDropDown
+            className={cls(styles.navbar_items_logoutwindow)}
+            user={user}
+            onClick={() => {
+              openLogOutWindow(false);
+              handleLogOut();
+            }}
+          />
         )}
       </div>
     </nav>

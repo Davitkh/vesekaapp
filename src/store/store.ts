@@ -1,11 +1,13 @@
 import { configureStore } from '@reduxjs/toolkit';
-import { signInReducers } from './detectors.slice';
+import { signInReducers } from './slices/detectors.slice';
+import { toggleReducers } from './slices/toggler.slice';
 import { AuthApi } from './api/auth_api';
 
 export const store = configureStore({
   reducer: {
     [AuthApi.reducerPath]: AuthApi.reducer,
     signIn: signInReducers,
+    toggle: toggleReducers,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware().concat(AuthApi.middleware),
