@@ -28,7 +28,9 @@ export const Navbar = () => {
             <NavLink to="/maps">Maps</NavLink>
 
             <Icon
-              className={cls(styles.navbar_items_usericon)}
+              className={cls(styles.navbar_items_usericon, {
+                [styles.navbar_items_usericon_active]: isLogOutWindowOpen,
+              })}
               icon="fa-solid fa-user"
               onClick={() =>
                 openLogOutWindow(isLogOutWindowOpen ? false : true)
