@@ -51,3 +51,6 @@
   top: 64px;
   right: 48px;
 }
+.navbar_items_usericon_active {
+  background: #006abb;
+}

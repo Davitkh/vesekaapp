@@ -53,7 +53,7 @@ export const SignIn = () => {
   return (
     <div className={cls(styles.auth_)}>
       <div className={cls(styles.authform)}>
-        <form className={cls()} onSubmit={(e) => SignIn(e)}>
+        <form onSubmit={(e) => SignIn(e)}>
           <h2 className={cls(styles.authform_title)}>Sign in</h2>
           <Textinput
             name={'email'}
